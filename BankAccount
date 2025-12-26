@@ -1,0 +1,54 @@
+package workshop;
+import java.util.Scanner;
+
+
+/**
+ * Write a description of class BankAccount here.
+ *
+ * @author (your name)
+ * @version (a version number or a date)
+ */
+public class BankAccount
+{
+    int accnum;
+    String name;
+    int balance;
+    
+    public BankAccount(int accnum, String name, int balance){
+        this.accnum=accnum;
+        this.name=name;
+        this.balance=balance;
+    }
+    
+    Scanner scan=new Scanner(System.in);
+    
+    public void deposit(int damount){
+        System.out.println("Enter your deposit amount:");
+        if(damount<=0){
+            System.out.println("Amount should be greater than 0");
+        }
+        else{
+            System.out.println(damount);
+            balance=balance+damount;
+        }
+    }
+    
+    public void withdraw(){
+        System.out.println("Enter your withdraw amount");
+        int wamount=scan.nextInt();
+        if(wamount<1000){
+            System.out.println("Amount should be atleast 1000");
+        }
+        else{
+            System.out.println(wamount);
+            balance=balance-wamount;
+        }
+  
+    }
+    
+    public void current(){
+        System.out.println("The acount holders name is: "+name);
+        System.out.println("The Account Number is: "+accnum);
+        System.out.println("The current balace is: "+balance);
+    }
+}
