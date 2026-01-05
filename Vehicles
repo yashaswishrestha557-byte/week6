@@ -1,0 +1,72 @@
+package Week9;
+
+
+/**
+ * Write a description of class Vehicles here.
+ *
+ * @author (your name)
+ * @version (a version number or a date)
+ */
+class Vehicles
+{
+    int vehiclesId;
+    String brand;
+    double basePrice;
+    
+    public Vehicles(int vehiclesId, String brand, double basePrice){
+        this.vehiclesId=vehiclesId;
+        this.brand=brand;
+        this.basePrice=basePrice;
+    }
+    
+    void displatVehicleInfo(){
+        System.out.println(vehiclesId);
+        System.out.println(brand);
+        System.out.println(basePrice);
+    }
+    
+    double calculateTax(){
+        double tax=basePrice*0.10;
+        return tax;
+    }
+    
+    public static void main(String[] args){
+        //System.out.println(vehiclesId +brand);
+        Vehicles obj = new Vehicles(01, "Car", 900.9);
+        obj.displatVehicleInfo();
+    }
+}
+
+class car extends Vehicles{
+    int numofDoors;
+    String fuelType;
+    
+    public car(int vehiclesId, String brand, double basePrice,int numofDoors, String fuelType){
+        super(vehiclesId,brand,basePrice);
+        this.numofDoors=numofDoors;
+        this.fuelType=fuelType;
+    }
+    
+    double calculateFinalPrice(){
+        double p=basePrice+calculateTax();
+        double finalval=basePrice+calculateTax()+(p*0.05);
+        return finalval;
+    }
+
+}
+
+class bike extends Vehicles{
+    int engineCapacity;
+    
+    public bike(int vehiclesId, String brand, double basePrice,int engineCapacity){
+        super(vehiclesId,brand,basePrice);
+        this.engineCapacity=engineCapacity;
+
+    }
+    
+    double calculateFinalPrice(){
+        double finalprice=basePrice+calculateTax();
+        return finalprice;
+    }
+
+}
