@@ -1,0 +1,71 @@
+package Week9;
+
+
+/**
+ * Write a description of class bank here.
+ *
+ * @author (your name)
+ * @version (a version number or a date)
+ */
+public class bank
+{
+    int accnum;
+    String name;
+    double balance;
+    
+    public bank(int accnum, String name, double balance){
+        this.accnum=accnum;
+        this.name=name;
+        this.balance=balance;
+    }
+    
+    void deposit(double amount) {
+        balance = balance + amount;
+        System.out.println("Deposited Amount: " + amount);
+    }
+
+    double getBalance(){
+        return balance;
+    }
+    
+    public static void main(String[] args){
+        bank b1=new bank(234567,"kat",10000);
+        
+        currentAccount c1=new currentAccount(234567,"kat",10000,1000);
+        c1.withdraw(1000);
+        
+    }
+}
+
+class saving extends bank{
+    int intrate;
+    
+    public saving(int accnum, String name, int balance, int intrate){
+        super(accnum, name, balance);
+        this.intrate=intrate;
+    }
+    
+    double calculateIntrest(){
+        return super.getBalance() * intrate/100;
+    }
+}
+
+class currentAccount extends bank{
+    double overdraftlimit;
+    
+    public currentAccount(int accnum, String name, int balance, double overdraftlimit){
+        super(accnum, name, balance);
+        this.overdraftlimit=overdraftlimit;
+    }
+    
+    boolean withdraw(double wamt){
+        if (wamt <= balance + overdraftlimit){
+            balance = balance-wamt;
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+}
+
