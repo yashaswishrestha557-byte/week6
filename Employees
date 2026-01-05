@@ -1,0 +1,69 @@
+package Week9;
+
+
+/**
+ * Write a description of class Employees here.
+ *
+ * @author (your name)
+ * @version (a version number or a date)
+ */
+class Employees
+{
+    int employeeId;
+    String name;
+    int basicSalary;
+    
+    public Employees(int employeeId, String name,int basicSalary){
+        this.employeeId=employeeId;
+        this.name=name;
+        this.basicSalary=basicSalary;
+    }
+    
+    double calculateBonus(){
+        return basicSalary*0.10;
+    }
+    
+    void display(){
+        System.out.println(employeeId+" "+ name+" "+ basicSalary);
+    }
+    
+    public static void main(String[] args){
+        Employees e1=new Employees(2,"Annie",50000);
+        e1.display();
+        
+        Permanent_employee p1= new Permanent_employee(2,"Annie", 50000,10000, 5000);
+        p1.calculateTotalSalary();
+        
+        contractEmployee c1=new contractEmployee(2,"Annie",50000,250);
+        c1.calculateTotalSalary();
+    }
+}
+
+class Permanent_employee extends Employees{
+    int hra;
+    int da;
+    public Permanent_employee(int employeeId, String name,int basicSalary, int hra, int da){
+        super(employeeId, name, basicSalary);
+        this.hra=hra;
+        this.da=da;
+    }
+    
+    double calculateTotalSalary(){
+        return basicSalary+hra+da+calculateBonus();
+    }
+    
+}
+
+class contractEmployee extends Employees{
+    int workingdays;
+    
+     public contractEmployee(int employeeId, String name,int basicSalary, int workingdays){
+         super(employeeId, name, basicSalary);
+         this.workingdays=workingdays;
+        
+    }
+    
+    double calculateTotalSalary(){
+        return basicSalary*workingdays;
+    }
+}
